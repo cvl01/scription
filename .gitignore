@@ -17,3 +17,5 @@ node_modules
 saves
 
 .DS_Store
+.env
+/index.html

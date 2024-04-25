@@ -323,7 +323,7 @@ function displayTranscript(userJson) {
     // use the json structure to detect the format being used
     // eg AWS vs DeepSpeech
 
-    console.log(data);
+    clearTranscript();
 
     if(data.segments){
         // Whisper parser
