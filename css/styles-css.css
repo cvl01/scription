@@ -259,7 +259,11 @@ body, html {
 }
 
 .low-confidence {
-    background-color: rgba(238, 20, 4, 0.301) !important;
+    background-color: rgba(238, 20, 4, 0.15) !important;
+}
+
+.medium-confidence {
+    border-bottom: 1px solid rgba(238, 20, 4, 0.6) !important;
 }
 
 .not-interactive {
@@ -389,4 +393,9 @@ body, html {
 
 .temporary-link {
     color: #21a094 !important;
+}
+
+.confidence-input {
+    display: inline;
+    width: 60px;
 }

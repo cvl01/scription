@@ -323,8 +323,34 @@ function displayTranscript(userJson) {
     // use the json structure to detect the format being used
     // eg AWS vs DeepSpeech
 
+    console.log(data);
+
+    if(data.segments){
+        // Whisper parser
+        console.log('Whisper formatted data detected');
+
+        segments = data.segments;
+
+        segments.forEach(function(segment){
+
+            paragraphCounter++;
+            paraId = "para-" + paragraphCounter;
+            newPara = CreateNewPara(segment.start, segment.speaker, paraId);
+            $('#content').append(newPara);
+
+            segment.words.forEach(function(word){
+                word_start_time_ms = word.start * 1000
+                word_end_time_ms = word.end * 1000
+
+                duration_ms = word_end_time_ms - word_start_time_ms;
+                text = " <span data-m='" + word_start_time_ms + "' data-d='" + duration_ms + "' data-confidence='" + word.score + "'>" + word.word + "</span>";
+                
+                $('#' + paraId).append(text);
+            });
+        });
+    }
     // parse the DeepSPeech formatted json
-    if (data.words) {
+    else if (data.words) {
         console.log('Mozilla formatted data detected');
 
         // turn off confidence toggle
@@ -1119,6 +1145,8 @@ function displayTranscript(userJson) {
     $('.whole').html(obj);
 
     // });
+
+    displayConfidence();
 
 
     var autoScrollCheck = document.getElementById("autoscroll-off").checked;

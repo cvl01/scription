@@ -71,7 +71,11 @@
 
 
       <a class="navbar-item has-text-weight-bold" href="https://scription.app">
-        <img src="images/scription-logo.svg" alt="scription logo" class="logo">
+        <div>
+          <img src="images/scription-logo.svg" alt="scription logo" class="logo">
+          <div>adapted for Whisper </div>
+        </div>
+
       </a>
 
       <!-- 
@@ -196,7 +200,6 @@
                   </span>
                 </span>
                 <span id="json-name" class="file-name">
-                  revai-short.json
                 </span>
               </label>
             </div>
@@ -221,7 +224,7 @@
                 </div>
                 <div class="dropdown-item">
 
-                      <p>Supported json formats include AWS Transcribe, Mozilla DeepSpeech and Rev.ai.</p>
+                      <p>Supported json formats include Whisper, AWS Transcribe, Mozilla DeepSpeech and Rev.ai.</p>
                       <p>JSONs loaded from a url will not work unless Cross-Origin Resource Sharing (CORS) have been <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS">configured</a>.</p>
 
                 </div>
@@ -259,7 +262,7 @@
         <div class="navbar-item">
           <!-- <button id="modal-button" class="button is-small is-primary is-large modal-button" data-target="modal" aria-haspopup="true" onclick="modal()">Launch example modal</button> -->
 
-          <a class="navbar-item" href="https://github.com/smlum/scription" target="_blank">
+          <a class="navbar-item" href="https://github.com/cvl01/scription" target="_blank">
             About &nbsp;
             <i class="fab fa-github fa-lg"></i>
           </a>
@@ -321,11 +324,15 @@
                       <input id="confidence" type="checkbox" name="confidence" class="switch is-rounded is-small"
                         checked="checked">
                       <label for="confidence">Highlight confidence</label>
-                      <!-- <input type="text" class="input" id="user-confidence" placeholder="Enter confidnece level" value="0.95"> -->
+                      <br>
+                      <input type="text" class="input confidence-input" id="user-low-confidence" placeholder="Enter low confidnece level" value="0.6">
+                      <input type="text" class="input confidence-input" id="user-medium-confidence" placeholder="Enter medium confidnece level" value="0.8">
+                      <input type="text" class="input confidence-input" id="user-high-confidence" placeholder="Enter medium confidnece level" value="0.95">
+
                     </div>
                     <div class="field">
                       <input id="annotation-switch" type="checkbox" name="annotation-switch"
-                        class="switch is-rounded is-small" checked="checked">
+                        class="switch is-rounded is-small" checked="">
                       <label for="annotation-switch">Annotation mode</label>
                       <!-- <input type="text" class="input" id="user-confidence" placeholder="Enter confidnece level" value="0.95"> -->
                     </div>
@@ -370,59 +377,7 @@
                   <article>
 
                     <section id="content" contenteditable="true">
-                      <p class="content" id="para-0" data-time="0.34" data-tc="0:00"><span class="unread" data-m="0.34"
-                          data-d="0">spk_1 </span><span class="timecode">[0:00] </span> <span data-m="340" data-d="600"
-                          data-confidence="1.0" class="">transcription</span> <span data-m="940" data-d="210"
-                          data-confidence="0.933" class="low-confidence">body</span> <span data-m="1150" data-d="340"
-                          data-confidence="0.986" class="">combines</span> <span data-m="1490" data-d="80"
-                          data-confidence="0.819" class="low-confidence">the</span> <span data-m="1570" data-d="370"
-                          data-confidence="1.0" class="">brute</span> <span data-m="1940" data-d="330"
-                          data-confidence="1.0" class="">force</span> <span data-m="2270" data-d="200"
-                          data-confidence="1.0" class="">of</span> <span data-m="2470" data-d="580"
-                          data-confidence="1.0" class="">automated</span> <span data-m="3050" data-d="830"
-                          data-confidence="1.0" class="">transcription</span> <span data-m="3880" data-d="270"
-                          data-confidence="1.0" class="">with</span> <span data-m="4150" data-d="120"
-                          data-confidence="0.999">an</span> <span data-m="4270" data-d="640" data-confidence="1.0"
-                          class="">interactive</span> <span data-m="4910" data-d="1490" data-confidence="1.0"
-                          class="">editor</span>. <span data-m="6400" data-d="180" data-confidence="1.0"
-                          class="">It</span> <span data-m="6580" data-d="460" data-confidence="0.999"
-                          class="">links</span> <span data-m="7040" data-d="420" data-confidence="0.999"
-                          class="">text</span> <span data-m="7460" data-d="380" data-confidence="1.0"
-                          class="">audio</span> <span data-m="7840" data-d="940" data-confidence="1.0"
-                          class="">playback</span>, <span data-m="8780" data-d="290" data-confidence="1.0"
-                          class="">making</span> <span data-m="9070" data-d="100" data-confidence="1.0">it</span> <span
-                          data-m="9170" data-d="380" data-confidence="1.0" class="">easier</span> <span data-m="9550"
-                          data-d="140" data-confidence="1.0">to</span> <span data-m="9690" data-d="420"
-                          data-confidence="1.0" class="">scan</span> <span data-m="10110" data-d="150"
-                          data-confidence="0.99" class="">through</span> <span data-m="10260" data-d="60"
-                          data-confidence="0.995" class="">a</span> <span data-m="10320" data-d="790"
-                          data-confidence="1.0" class="">transcript</span> <span data-m="11110" data-d="140"
-                          data-confidence="1.0">to</span> <span data-m="11250" data-d="310" data-confidence="1.0"
-                          class="">fix</span> <span data-m="11560" data-d="180" data-confidence="1.0">any</span> <span
-                          data-m="11740" data-d="520" data-confidence="1.0" class="">errors</span> <span data-m="12260"
-                          data-d="120" data-confidence="0.998" class="">and</span> <span data-m="12380" data-d="460"
-                          data-confidence="1.0" class="">extract</span> <span data-m="12840" data-d="380"
-                          data-confidence="1.0" class="">useful</span> <span data-m="13220" data-d="1520"
-                          data-confidence="1.0" class="">information</span>. <br></p>
-                      <p class="content" data-time="0.34" data-tc="0:00"><span data-m="14740" data-d="100"
-                          data-confidence="1.0" class="">spk_1 [0:14] The</span> <span data-m="14840" data-d="950"
-                          data-confidence="1.0" class="">objective</span> <span data-m="15790" data-d="150"
-                          data-confidence="1.0" class="">is</span> <span data-m="15940" data-d="80"
-                          data-confidence="1.0">to</span> <span data-m="16020" data-d="190" data-confidence="1.0"
-                          class="">make</span> <span data-m="16210" data-d="90" data-confidence="0.592"
-                          class="low-confidence">this</span> <span data-m="16300" data-d="380" data-confidence="1.0"
-                          class="">speech</span> <span data-m="16680" data-d="130" data-confidence="0.998">to</span>
-                        <span data-m="16810" data-d="360" data-confidence="0.997" class="">text</span> <span
-                          data-m="17170" data-d="410" data-confidence="1.0" class="">process</span> <span data-m="17580"
-                          data-d="840" data-confidence="1.0" class="">quicker</span>, <span data-m="18420" data-d="800"
-                          data-confidence="1.0" class="">cheaper</span>, <span data-m="19220" data-d="140"
-                          data-confidence="0.806" class="low-confidence">on</span> <span data-m="19360" data-d="50"
-                          data-confidence="0.999">a</span> <span data-m="19410" data-d="180" data-confidence="1.0"
-                          class="">bit</span> <span data-m="19590" data-d="200" data-confidence="1.0"
-                          class="">more</span> <span data-m="19790" data-d="200" data-confidence="1.0">enjoyable</span>.
-                      </p>
-                      <p class="content" id="para-1" data-time="19.79" data-tc="0:20"><span class="unread"
-                          data-m="19.79" data-d="0">spk_1 </span><span class="timecode">[0:20] </span></p>
+                     
                     </section>
 
                   </article>

@@ -1,4 +1,6 @@
-# Scription ✍️
+# Scription (adapted for Whisper) ✍️
+
+This is a fork of the [Scription editor by smlum](https://github.com/smlum/scription/) adapted for Whisper and WhisperX transcripts. It supports WhisperX's json files containing speaker diarization. 
 
 Scription is an editor for automated transcription services like [Amazon Transcribe](https://aws.amazon.com/transcribe/) and [Mozilla Deepspeech](https://github.com/mozilla/DeepSpeech). It links transcript text to audio playback to bring love and joy to the transcription process ❤️ It's currently being developed bit by bit - if you have any feedback please feel free to send me a [message](mailto:smlumley@icloud.com).
 

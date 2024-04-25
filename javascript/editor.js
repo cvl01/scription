@@ -178,10 +178,6 @@ $(document).ready(function () {
 
 });
 
-var displayConfidenceToggle = false
-
-
-
 // $('#confidence').prop('checked', false);
 
 $('#confidence').change(function () {
@@ -198,19 +194,20 @@ $('#confidence').change(function () {
 
 function displayConfidence() {
 
-    if (displayConfidenceToggle == false) {
-        var userConfidence = $("#user-confidence").val()
-        var userConfidence = 0.95;
-        console.log(userConfidence);
+    displayConfidenceToggle = document.getElementById("confidence").checked;
+    if (displayConfidenceToggle) {
+        var userLowConfidence = $("#user-low-confidence").val()
+        var userMediumConfidence = $("#user-medium-confidence").val()
         $("span").filter(function() {
-            return $(this).data("confidence") < userConfidence;
+            return $(this).data("confidence") < userLowConfidence;
             }).addClass("low-confidence")
-        displayConfidenceToggle = true
-    } else if (displayConfidenceToggle == true) {
-        $(".low-confidence").removeClass("low-confidence");
-        console.log('removed');
 
-        displayConfidenceToggle = false;
+        $("span").filter(function() {
+            return $(this).data("confidence") < userMediumConfidence;
+            }).addClass("medium-confidence")
+    } else if (displayConfidenceToggle == false) {
+        $(".low-confidence").removeClass("low-confidence");
+        $(".medium-confidence").removeClass("medium-confidence");
     }
 
 }
