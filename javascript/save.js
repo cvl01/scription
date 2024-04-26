@@ -24,18 +24,69 @@
 
 // export just text to file
 function exportToTxt() {
-    var filename = "transcript.txt";
+
+    var original_filename = $("#json-name").text();
+    var basename = original_filename.split('.').slice(0, -1).join('.');
+    var filename = "transcript-" + basename + ".txt";
+
     // var text = document.getElementById("content").innerHTML;
     var items = document.getElementById("content").getElementsByClassName('content');
     var text = '';
     //export transcript pretty print TODO add speakers
     for (i = 0; i < items.length; i++) {
-      text += items[i].getAttribute('data-tc') + ' ' + items[i].innerText + '\n\n';
+      text += items[i].innerText + '\n\n';
     }
     var element = document.createElement('a');
     element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
     element.setAttribute('download', filename);
 
+    element.style.display = 'none';
+    document.body.appendChild(element);
+
+    element.click();
+
+    document.body.removeChild(element);
+}
+
+function exportToJson() {
+    var original_filename = $("#json-name").text();
+    var basename = original_filename.split('.').slice(0, -1).join('.');
+    var filename = "transcript-" + basename + ".json";
+
+    json_data = {
+        'segments': []
+    };
+
+    $('#content').children('.content').each(function () {
+
+        var sentence = {
+            'text': $(this).text(),
+            'speaker': $(this).children('.speaker').first().text().trim(),
+            'words': [],
+            'start': $(this).attr('data-time'),
+        };
+
+        $(this).children('span.word').each(function () {
+
+            sentence['words'].push({
+                'start': $(this).attr('data-m') / 1000,
+                'end': $(this).attr('data-end') / 1000,
+                'score': $(this).attr('data-confidence'),
+                'word': $(this).text()
+            });
+        });
+
+        json_data['segments'].push(sentence);
+        
+    });
+
+    console.log(json_data)
+
+    var element = document.createElement('a');
+    var jsonData = JSON.stringify(json_data);
+    element.setAttribute('href', 'data:text/json;charset=utf-8,' + encodeURIComponent(jsonData));
+    element.setAttribute('download', filename);
+    
     element.style.display = 'none';
     document.body.appendChild(element);
 

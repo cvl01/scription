@@ -58,7 +58,7 @@
   <!-- <script src="/jquery/jquery.js"></script> -->
 
   <script src="javascript/dark-mode.js"></script>
-  
+
 
 </head>
 
@@ -150,22 +150,22 @@
               <button onclick="getAudioUrl()" class="button is-small is-primary">Load</button>
             </p> 
             </div> -->
-                  
-                <div class="dropdown-item">
-                  <div class="field has-addons navbar-item">
-                    <div class="control">
-                      <input class="input is-small" type="text" placeholder="Audio url" id="audioUrll">
-                      </input>
+
+                    <div class="dropdown-item">
+                      <div class="field has-addons navbar-item">
+                        <div class="control">
+                          <input class="input is-small" type="text" placeholder="Audio url" id="audioUrll">
+                          </input>
+                        </div>
+                        <p class="control">
+                          <button class="button is-small is-primary disabled" onclick="getAudioUrl()">Load</button>
+                        </p>
+                      </div>
                     </div>
-                    <p class="control">
-                      <button class="button is-small is-primary disabled" onclick="getAudioUrl()">Load</button>
-                    </p>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-          </div>
           </div>
         </div>
 
@@ -187,52 +187,53 @@
                 <div class="dropdown-content">
                   <div class="dropdown-item">
                     <!-- for file api json input  -->
-            <div class="file has-name is-small is-primary">
-              <label class="file-label">
-                <input id="user-json-file" class="file-input" type="file" name="resume">
-                <span class="file-cta">
-                  <span class="file-icon">
-                    <i class="fas fa-upload"></i>
-                  </span>
-                  <span class="file-label">
-                    Load json…
-                  </span>
-                </span>
-                <span id="json-name" class="file-name">
-                </span>
-              </label>
-            </div>
-
-
-                  
-                <div class="dropdown-item">
-                  
-                  <!-- Load json from url  -->
-                    <div class="field has-addons navbar-item">
-                      <div class="control">
-                        <input class="input is-small" type="text" placeholder="Json url" id="jsonUrll">
-                        </input>
-                      </div>
-                      <p class="control">
-                        <button class="button is-small is-primary" onclick="getJSONFromUrl()">Load</button>
-                      </p>
-                  
+                    <div class="file has-name is-small is-primary">
+                      <label class="file-label">
+                        <input id="user-json-file" class="file-input" type="file" name="resume">
+                        <span class="file-cta">
+                          <span class="file-icon">
+                            <i class="fas fa-upload"></i>
+                          </span>
+                          <span class="file-label">
+                            Load json…
+                          </span>
+                        </span>
+                        <span id="json-name" class="file-name">
+                        </span>
+                      </label>
                     </div>
 
 
-                </div>
-                <div class="dropdown-item">
+
+                    <div class="dropdown-item">
+
+                      <!-- Load json from url  -->
+                      <div class="field has-addons navbar-item">
+                        <div class="control">
+                          <input class="input is-small" type="text" placeholder="Json url" id="jsonUrll">
+                          </input>
+                        </div>
+                        <p class="control">
+                          <button class="button is-small is-primary" onclick="getJSONFromUrl()">Load</button>
+                        </p>
+
+                      </div>
+
+
+                    </div>
+                    <div class="dropdown-item">
 
                       <p>Supported json formats include Whisper, AWS Transcribe, Mozilla DeepSpeech and Rev.ai.</p>
-                      <p>JSONs loaded from a url will not work unless Cross-Origin Resource Sharing (CORS) have been <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS">configured</a>.</p>
+                      <p>JSONs loaded from a url will not work unless Cross-Origin Resource Sharing (CORS) have been <a
+                          href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS">configured</a>.</p>
 
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          </div>
 
-            
+
 
             <!-- <p class="control">
             <input type="text" class="input" id="user-filename" placeholder="Enter json filename"
@@ -324,9 +325,12 @@
                         checked="checked">
                       <label for="confidence">Highlight confidence</label>
                       <br>
-                      <input type="text" class="input confidence-input" id="user-low-confidence" placeholder="Enter low confidnece level" value="0.6">
-                      <input type="text" class="input confidence-input" id="user-medium-confidence" placeholder="Enter medium confidnece level" value="0.8">
-                      <input type="text" class="input confidence-input" id="user-high-confidence" placeholder="Enter medium confidnece level" value="0.95">
+                      <input type="text" class="input confidence-input" id="user-low-confidence"
+                        placeholder="Enter low confidnece level" value="0.6">
+                      <input type="text" class="input confidence-input" id="user-medium-confidence"
+                        placeholder="Enter medium confidnece level" value="0.8">
+                      <input type="text" class="input confidence-input" id="user-high-confidence"
+                        placeholder="Enter medium confidnece level" value="0.95">
 
                     </div>
                     <div class="field">
@@ -376,7 +380,7 @@
                   <article>
 
                     <section id="content" contenteditable="true">
-                     
+
                     </section>
 
                   </article>
@@ -659,8 +663,22 @@
                 onclick="exportToTxt()">Export
                 transcript text</button>
             </div>
+
           </div>
         </div>
+
+        <div class="navbar-item">
+          <div class="buttons">
+
+            <div class="field">
+              <button class="button is-small is-primary disabled" name="export-json-transcript"
+                onclick="exportToJson()">Export
+                JSON</button>
+            </div>
+          </div>
+        </div>
+
+
         <div class="navbar-item">
           <div class="buttons">
             <div class="field">
@@ -680,16 +698,16 @@
     window.offsetMs = 0 || 0;
   </script>
 
-<script src="javascript/display.js"></script>
-<script src="javascript/editor.js"></script>
-<script src="javascript/save.js"></script>
-<script src="javascript/dark-mode-footer.js"></script>
+  <script src="javascript/display.js"></script>
+  <script src="javascript/editor.js"></script>
+  <script src="javascript/save.js"></script>
+  <script src="javascript/dark-mode-footer.js"></script>
 
-<script src="javascript/hyperaudio-lite.js"></script>
-<script src="javascript/trint-player.js"></script>
-<script src="javascript/tooltip.js"></script>
+  <script src="javascript/hyperaudio-lite.js"></script>
+  <script src="javascript/trint-player.js"></script>
+  <script src="javascript/tooltip.js"></script>
 
-<script src="javascript/bulma.js"></script>
+  <script src="javascript/bulma.js"></script>
 
   <!-- <script src="../../node_modules/green-audio-player/dist/js/green-audio-player.js"></script> -->
   <script src="https://cdn.jsdelivr.net/gh/greghub/green-audio-player/dist/js/green-audio-player.min.js"></script>

@@ -58,7 +58,7 @@ function CreateNewPara(timeOfFirstWord, speaker, paraId) {
     var formattedTime = fmtMSS(timeOfFirstWord)
     var paraTime = "<p class='content' id='" + paraId + "' data-time='" + timeOfFirstWord + "' data-tc='" + formattedTime + "'>";
     // only give it span if it's a word?
-    var paraSpeaker = "<span class='unread' data-m='" + timeOfFirstWord + "' data-d='0' class='speaker'>" + speaker + " </span>";
+    var paraSpeaker = "<span class='unread speaker' data-m='" + timeOfFirstWord + "' data-d='0' >" + speaker + " </span>";
     var paraFormattedTime = "<span class ='timecode'>[" + formattedTime + "] </span>";
     var endPara = "</p>"
     var newPara = paraTime + paraSpeaker + paraFormattedTime + endPara;
@@ -330,20 +330,24 @@ function displayTranscript(userJson) {
         console.log('Whisper formatted data detected');
 
         segments = data.segments;
+        current_speaker = null;
 
         segments.forEach(function(segment){
 
-            paragraphCounter++;
-            paraId = "para-" + paragraphCounter;
-            newPara = CreateNewPara(segment.start, segment.speaker, paraId);
-            $('#content').append(newPara);
+            if(segment.speaker != current_speaker){
+                current_speaker = segment.speaker;
+                paraId = "para-" + paragraphCounter;
+                newPara = CreateNewPara(segment.start, segment.speaker, paraId);
+                $('#content').append(newPara);
+                paragraphCounter++;
+            }
 
             segment.words.forEach(function(word){
                 word_start_time_ms = word.start * 1000
                 word_end_time_ms = word.end * 1000
 
                 duration_ms = word_end_time_ms - word_start_time_ms;
-                text = " <span data-m='" + word_start_time_ms + "' data-d='" + duration_ms + "' data-confidence='" + word.score + "'>" + word.word + "</span>";
+                text = " <span class='word' data-m='" + word_start_time_ms + "' data-end='" + word_end_time_ms + "' data-d='" + duration_ms + "' data-confidence='" + word.score + "'>" + word.word + "</span>";
                 
                 $('#' + paraId).append(text);
             });

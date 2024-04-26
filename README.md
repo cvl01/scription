@@ -104,23 +104,31 @@ To use automated transcription services you may need to format audio in a partic
 
 1. Clone the repository:
 ```
-git clone https://github.com/smlum/scription
+git clone https://github.com/cvl01/scription
 cd scription
 ```
 
-2. Install packages (requires [node](https://nodejs.org/en/download/))
+2. Set .env variables
+Set `APP_DOMAIN` in .env
+
+3. Install packages (requires [node](https://nodejs.org/en/download/))
 ```
 npm run install
 ```
 
-3. Run on a local server
+4. Build html using gulp
+
+In the root of the project, run gulp. 
+```
+gulp
+```
+
+5. Run on a local server
 ```
 npm run start
 ```
-or for development (with browser sync):
-```
-npm run dev
-```
+
+Or use a local Apache or Nginx server pointed towards the index.html in the root. 
 
 ## Privacy 
 
